@@ -1,0 +1,79 @@
+import java.util.*;
+
+import javax.swing.JOptionPane;
+
+class ass
+{
+	public static void main(String args[])
+	{
+		Scanner input = new Scanner(System.in);
+		int T=input.nextInt();
+		while(T>0)
+		{
+			int N=input.nextInt();
+			int A=input.nextInt();
+			int B=input.nextInt();
+			
+			String sa = toBinary(N,A);
+		
+			String sb = toBinary(N,B);
+			
+			
+			int p = Math.min(count(sa,'1'),count(sb,'0'))+Math.min(count(sa,'0'),count(sb,'1'));
+			
+			String res="";
+			N=N-p;
+			while(p>0)
+			{
+				res=res+'1';
+				p--;
+			}
+			
+			while(N>0)
+			{
+				res=res+'0';
+				N--;
+			}
+			System.out.println(finalAnswer(res));
+			T--;
+			
+		}
+	}
+
+	private static int finalAnswer(String res) {
+		int answer=0,a=1;
+		for(int j= res.length()-1 ; j>=0 ;j--)
+		{
+			answer=answer+((res.charAt(j)-'0')*a);
+			a=a*2;
+		}
+		return answer;
+	}
+
+	private static int count(String sb, char c) {
+		int count=0;
+		for(int i = 0 ; i  < sb.length() ; i++)
+		{
+			if(sb.charAt(i)==c)
+				count++;
+		}
+		return count;
+	}
+
+	private static String toBinary(int n, int a) {
+		String x="";
+		while(a>0)
+		{
+			int rem=a%2;
+			x=Character.toString((char) (rem+'0'))+x;
+			a=a/2;
+		}
+		while(x.length()<n)
+		{
+			x=x+'0';
+		}
+		return x;
+	}
+	
+	
+}
