@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class TAVISUAL
+{
+	public static void main(String args[])
+	{
+		Scanner input = new Scanner(System.in);
+		int test=input.nextInt();
+		while(test-->0)
+		{
+			int n = input.nextInt();
+			int c = input.nextInt();
+			int q = input.nextInt();
+			while(q-->0)
+			{
+				int l = input.nextInt();
+				int r=input.nextInt();
+				
+				if(c>= l && c<=r)
+				{
+					c=(r-(c-l));
+				}
+			}
+			System.out.println(c);
+		}
+	}
+}
