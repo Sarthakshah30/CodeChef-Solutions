@@ -1,0 +1,27 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class apples
+{
+	public static void main(String args[])
+	{
+		Scanner input = new Scanner(System.in);
+		int N = input.nextInt();
+		long D = input.nextLong();
+		long[] array = new long[N];
+		for(int i = 0 ; i< N ;i++)
+			array[i]=input.nextLong();
+		Arrays.sort(array);
+		int pair=0;
+		for(int i = 0 ; i < N ;i++)
+		{
+			int j = i+1;
+			if(j<N && array[j]-array[i]<=D)
+			{
+				pair++;
+				i=j;
+			}
+		}
+		System.out.println(pair);
+	}
+}
